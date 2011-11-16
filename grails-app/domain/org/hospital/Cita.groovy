@@ -2,11 +2,18 @@ package org.hospital
 import general.*
 class Cita {
     String status
-    //Como poner la fecha? poner fechaInicial y fechaFinal?
+    Date cita
     Date dateCreated
-    Date dateUpdated
+    Date lastUpdated
     
     static belongsTo=[doctor:Usuario,paciente:Usuario,userCreated:Usuario]
+    
     static constraints = {
+        cita blank:false
+        status blank:false
+    }
+    
+    static mapping={
+        status maxSize:3
     }
 }
