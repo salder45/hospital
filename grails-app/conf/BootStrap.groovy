@@ -26,33 +26,57 @@ class BootStrap {
         def usuarioAdmin=Usuario.findByUsername("Admin")
         if(!usuarioAdmin){ 
             usuarioAdmin=new Usuario(
-            username:"admin",
-            password:"admin"
+                username:"admin",
+                password:"admin",
+                nombre:"admin",
+                apellidoPaterno:"admin",
+                apellidoMaterno:"admin",
+                telefono:"1234567890",
+                telefonoCelular:"1234567890",
+                email:"admin@hospital.com"
             ).save()
             UsuarioRol.create(usuarioAdmin,rolAdmin)
         }
-   def usuarioDoctor=Usuario.findByUsername("Doctor")
+        def usuarioDoctor=Usuario.findByUsername("Doctor")
         if(!usuarioDoctor){ 
             usuarioDoctor=new Usuario(
-            username:"doctor",
-            password:"doctor"
+                username:"doctor",
+                password:"doctor",
+                nombre:"doctor",
+                apellidoPaterno:"doctor",
+                apellidoMaterno:"doctor",
+                telefono:"1234567890",
+                telefonoCelular:"1234567890",
+                email:"doctor@hospital.com"
             ).save()
             UsuarioRol.create(usuarioDoctor,rolDoctor)
         }  
         
-   def usuarioAsistente=Usuario.findByUsername("Asistente")
+        def usuarioAsistente=Usuario.findByUsername("Asistente")
         if(!usuarioAsistente){ 
             usuarioAsistente=new Usuario(
-            username:"asistente",
-            password:"asistente"
+                username:"asistente",
+                password:"asistente",
+                nombre:"asistente",
+                apellidoPaterno:"asistente",
+                apellidoMaterno:"asistente",
+                telefono:"1234567890",
+                telefonoCelular:"1234567890",
+                email:"asistente@hospital.com"
             ).save()
             UsuarioRol.create(usuarioAsistente,rolAsistente)
         }  
-           def usuarioPaciente=Usuario.findByUsername("Cliente")
+        def usuarioPaciente=Usuario.findByUsername("Cliente")
         if(!usuarioPaciente){ 
             usuarioPaciente=new Usuario(
-            username:"paciente",
-            password:"paciente"
+                username:"paciente",
+                password:"paciente",
+                nombre:"paciente",
+                apellidoPaterno:"paciente",
+                apellidoMaterno:"paciente",
+                telefono:"1234567890",
+                telefonoCelular:"1234567890",
+                email:"paciente@hospital.com"
             ).save()
             UsuarioRol.create(usuarioPaciente,rolPaciente)
         }  

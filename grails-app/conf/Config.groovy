@@ -1,10 +1,11 @@
 // locations to search for config files that get merged into the main config
 // config files can either be Java properties files or ConfigSlurper scripts
 
-// grails.config.locations = [ "classpath:${appName}-config.properties",
-//                             "classpath:${appName}-config.groovy",
-//                             "file:${userHome}/.grails/${appName}-config.properties",
-//                             "file:${userHome}/.grails/${appName}-config.groovy"]
+grails.config.locations = [ "classpath:${appName}-config.properties",
+                             "classpath:${appName}-config.groovy",
+                             "file:${userHome}/.grails/${appName}-config.properties",
+                             "file:${userHome}/.grails/${appName}-config.groovy"]
+//grails.config.locations=["file:${userHome}/.grails/${appName}-config.groovy"]
 
 // if (System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
@@ -97,6 +98,11 @@ off 'grails.app.services.org.grails.plugin.resource',
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'general.Usuario'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'general.UsuarioRol'
 grails.plugins.springsecurity.authority.className = 'general.Rol'
+grails.plugins.springsecurity.roleHierarchy='''
+ROLE_ADMIN > ROLE_DOCTOR
+ROLE_DOCTOR > ROLE_ASISTENTE
+ROLE_ASISTENTE > ROLE_PACIENTE
+'''
 
 grails.gorm.default.mapping={
     id generator:'identity'
