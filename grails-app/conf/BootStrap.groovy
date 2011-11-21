@@ -1,4 +1,5 @@
 import general.*
+import hospital.commons.Constantes
 class BootStrap {
     
 
@@ -10,16 +11,16 @@ class BootStrap {
         def rolAsistente=general.Rol.findByAuthority('ROLE_ASISTENTE')
         def rolPaciente=general.Rol.findByAuthority('ROLE_PACIENTE')
         if(!rolAdmin){ 
-            rolAdmin=new general.Rol(authority:'ROLE_ADMIN').save()       
+            rolAdmin=new general.Rol(authority:'ROLE_ADMIN',nombre:Constantes.NOMBRE_ROL_ADMIN).save()       
         }
         if(!rolDoctor){ 
-            rolDoctor=new general.Rol(authority:'ROLE_DOCTOR').save()
+            rolDoctor=new general.Rol(authority:'ROLE_DOCTOR',nombre:Constantes.NOMBRE_ROL_DOCTOR).save()
         }
         if(!rolAsistente){ 
-            rolAsistente=new general.Rol(authority:'ROLE_ASISTENTE').save()
+            rolAsistente=new general.Rol(authority:'ROLE_ASISTENTE',nombre:Constantes.NOMBRE_ROL_ASISTENTE).save()
         }
         if(!rolPaciente){ 
-            rolPaciente=new general.Rol(authority:'ROLE_PACIENTE').save() 
+            rolPaciente=new general.Rol(authority:'ROLE_PACIENTE',nombre:Constantes.NOMBRE_ROL_USUARIO).save() 
         }
         
         log.info 'checando usuarios'
