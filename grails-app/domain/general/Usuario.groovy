@@ -17,9 +17,10 @@ class Usuario {
     boolean accountLocked
     boolean passwordExpired
     // Truena por referencia bidireccional
+    Usuario doctorAlQueAsiste
     static hasMany=[citasPaciente:Cita,citasDoctor:Cita,especialidades:Especialidad]
     static mappedBy=[citasDoctor:'doctor',citasPaciente:'paciente']
-
+    static transients = ['rol']
     static constraints = {
         username blank: false, unique: true
         password blank: false,password:true
@@ -30,9 +31,15 @@ class Usuario {
         telefonoCelular blank:true,matches:"[0-9]+",maxSize:16,minSize:10
         email email:true,blank:true
     }
+    
+    Rol getRol(){
+        log.debug " ${getAuthorities().toList().get(0)}"        
+        return getAuthorities().toList().get(0)
+    }
 
     static mapping = {
         password column: '`password`'
+        doctorAlQueAsiste column:'doctor_asiste_id'
     }
 
     Set<Rol> getAuthorities() {
@@ -51,5 +58,12 @@ class Usuario {
 
     protected void encodePassword() {
         password = springSecurityService.encodePassword(password)
+    }
+    
+    
+    static namedQueries={
+        buscarParametros{ Usuario doctor->
+            
+        }
     }
 }
