@@ -5,5 +5,19 @@ class Especialidad {
     static belongsTo=[doctor:Usuario]
     
     static constraints = {
+    
+    nombre(blank:false)
     }
+     
+     static mapping = {
+     
+        table 'especialidad'
+     }
+          
+     String toString() {
+        return nombre
+    }  
+                                  
 }
+
+
