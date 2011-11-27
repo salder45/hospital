@@ -3,7 +3,7 @@ package general
 import org.springframework.dao.DataIntegrityViolationException
 import grails.plugins.springsecurity.Secured
 import hospital.commons.Constantes
-
+import grails.converters.JSON
 class UsuarioController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -36,8 +36,9 @@ class UsuarioController {
         def rol=Rol.findByAuthority("ROLE_PACIENTE");
         if(params.rolN!=null){
             log.debug "Trae Un Rol"
-            rol=Rol.get(params.rolN)
+            rol=Rol.get(params.rolN)            
         }
+        usuario.tipoUsuario=usuarioService.asignaTipoUsuario(rol)
         log.debug rol
         if (!usuario.save(flush: true)) {
             render(view: "crear", model: [usuario: usuario])
@@ -142,5 +143,33 @@ class UsuarioController {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'usuario.label', default: 'Usuario'), params.id])
             redirect(action: "ver", id: params.id)
         }
+    }
+    
+    
+    def buscaUsuariosDoctor(){
+        log.debug "Busca Usuarios ${params}"
+        def filtro="%${params.term}%"        
+        def usuarios=Usuario.buscarNombreCompleto(filtro,Constantes.DOCTOR)        
+        log.debug "Usuarios --> ${usuarios.list()}"
+        def lista=[]
+        for(usuario in usuarios.list()){
+            lista <<[id:usuario.id,value:usuario.nombreCompleto]
+        }
+        log.debug("Lista: $lista")
+        log.debug("ListaJSON: ${lista as JSON}")
+        render lista as JSON
+    }
+    def buscaUsuariosPacientes(){
+        log.debug "Busca Usuarios ${params}"
+        def filtro="%${params.term}%"        
+        def usuarios=Usuario.buscarNombreCompleto(filtro,null)        
+        log.debug "Usuarios --> ${usuarios.list()}"
+        def lista=[]
+        for(usuario in usuarios.list()){
+            lista <<[id:usuario.id,value:usuario.nombreCompleto]
+        }
+        log.debug("Lista: $lista")
+        log.debug("ListaJSON: ${lista as JSON}")
+        render lista as JSON
     }
 }

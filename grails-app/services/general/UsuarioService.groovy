@@ -34,4 +34,19 @@ class UsuarioService {
         }
         return lista
     }
+    
+    String asignaTipoUsuario(general.Rol rol){
+        log.debug "${rol.nombre}"
+        String tipo=""
+        if(rol.nombre.equals(Constantes.NOMBRE_ROL_ADMIN)){
+            tipo=Constantes.ADMIN
+        }else if(rol.nombre.equals(Constantes.NOMBRE_ROL_DOCTOR)){
+            tipo=Constantes.DOCTOR                    
+        }else if(rol.nombre.equals(Constantes.NOMBRE_ROL_ASISTENTE)){
+            tipo=Constantes.ASISTENTE
+        }else {
+            tipo=Constantes.USUARIO            
+        }        
+        return tipo
+    }
 }

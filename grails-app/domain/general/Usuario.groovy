@@ -18,6 +18,8 @@ class Usuario {
     boolean passwordExpired
     // Truena por referencia bidireccional
     Usuario doctorAlQueAsiste
+    String tipoUsuario;
+    
     static hasMany=[citasPaciente:Cita,citasDoctor:Cita,especialidades:Especialidad]
     static mappedBy=[citasDoctor:'doctor',citasPaciente:'paciente']
     static transients = ['rol']
@@ -60,10 +62,18 @@ class Usuario {
         password = springSecurityService.encodePassword(password)
     }
     
+    String getNombreCompleto(){
+        return nombre+" "+apellidoPaterno+" "+apellidoMaterno
+    }
     
     static namedQueries={
-        buscarParametros{ Usuario doctor->
-            
+        buscarNombreCompleto{ String filtro,String tipo ->
+            if(tipo!=null&&!tipo.trim().equals("")){
+            eq "tipoUsuario",tipo                
+            }
+            like "nombre",filtro
+            like "apellidoPaterno",filtro
+            like "apellidoMaterno",filtro
         }
     }
 }

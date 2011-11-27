@@ -35,7 +35,8 @@ class BootStrap {
                 apellidoMaterno:"admin",
                 telefono:"1234567890",
                 telefonoCelular:"1234567890",
-                email:"admin@hospital.com"
+                email:"admin@hospital.com",
+                tipoUsuario:Constantes.ADMIN
             ).save()
             UsuarioRol.create(usuarioAdmin,rolAdmin)
         }
@@ -49,7 +50,8 @@ class BootStrap {
                 apellidoMaterno:"doctor",
                 telefono:"1234567890",
                 telefonoCelular:"1234567890",
-                email:"doctor@hospital.com"
+                email:"doctor@hospital.com",
+                tipoUsuario:Constantes.DOCTOR
             ).save()
             UsuarioRol.create(usuarioDoctor,rolDoctor)
         }  
@@ -64,7 +66,8 @@ class BootStrap {
                 apellidoMaterno:"asistente",
                 telefono:"1234567890",
                 telefonoCelular:"1234567890",
-                email:"asistente@hospital.com"
+                email:"asistente@hospital.com",
+                tipoUsuario:Constantes.ASISTENTE
             ).save()
             UsuarioRol.create(usuarioAsistente,rolAsistente)
         }  
@@ -78,7 +81,8 @@ class BootStrap {
                 apellidoMaterno:"paciente",
                 telefono:"1234567890",
                 telefonoCelular:"1234567890",
-                email:"paciente@hospital.com"
+                email:"paciente@hospital.com",
+                tipoUsuario:Constantes.USUARIO
             ).save()
             UsuarioRol.create(usuarioPaciente,rolPaciente)
         }

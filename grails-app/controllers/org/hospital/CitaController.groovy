@@ -1,10 +1,12 @@
 package org.hospital
-
+import hospital.commons.Constantes
 import org.springframework.dao.DataIntegrityViolationException
-
+import grails.plugins.springsecurity.Secured
+@Secured(['ROLE_ASISTENTE'])
 class CitaController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    def springSecurityService
 
     def index() {
         redirect(action: "lista", params: params)
@@ -20,7 +22,10 @@ class CitaController {
     }
 
     def guardar() {
+        log.debug "parametros Crear ${params}"
         def cita = new Cita(params)
+        cita.status=Constantes.STATUS_CITA_OTORGADA
+        cita.userCreated=springSecurityService.currentUser
         if (!cita.save(flush: true)) {
             render(view: "crear", model: [cita: cita])
             return
