@@ -172,4 +172,9 @@ class UsuarioController {
         log.debug("ListaJSON: ${lista as JSON}")
         render lista as JSON
     }
+    
+    def buscarUsuario(){
+        log.debug "Busca Usuarios ${params}"
+        
+    }
 }

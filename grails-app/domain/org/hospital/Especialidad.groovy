@@ -3,15 +3,14 @@ import general.*
 class Especialidad {
     String nombre 
        
-    static belongsTo=[doctor:Usuario]
+    static hasMany=[doctores:DoctorEspecialidad]
     
     static constraints = {
     
     nombre(blank:false)
     }
      
-     static mapping = {
-     
+     static mapping = {     
         table 'especialidad'
      }
           

@@ -20,7 +20,7 @@ class Usuario {
     Usuario doctorAlQueAsiste
     String tipoUsuario;
     
-    static hasMany=[citasPaciente:Cita,citasDoctor:Cita,especialidades:Especialidad]
+    static hasMany=[citasPaciente:Cita,citasDoctor:Cita,especialidades:DoctorEspecialidad]
     static mappedBy=[citasDoctor:'doctor',citasPaciente:'paciente']
     static transients = ['rol']
     static constraints = {

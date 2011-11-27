@@ -87,7 +87,7 @@ class BootStrap {
             UsuarioRol.create(usuarioPaciente,rolPaciente)
         }
         
-        
+/*        
            def especialidad1 = new Especialidad(
                 nombre:"Hematologia",
                 doctor:usuarioDoctor
@@ -103,6 +103,7 @@ class BootStrap {
                 nombre:"Obstetricia",
                 doctor:usuarioDoctor
             ).save()
+            */
     }
     
     
