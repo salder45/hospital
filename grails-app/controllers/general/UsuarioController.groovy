@@ -4,6 +4,7 @@ import org.springframework.dao.DataIntegrityViolationException
 import grails.plugins.springsecurity.Secured
 import hospital.commons.Constantes
 import grails.converters.JSON
+import org.hospital.*
 class UsuarioController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -52,7 +53,12 @@ class UsuarioController {
 
     def ver() {
         log.debug "Ver Usuario $params"
-        def usuario = Usuario.get(params.id)
+        def usuario;
+        if(params?.usuario?.id!=null){
+            usuario=Usuario.get(params.usuario.id)
+        }else{            
+            usuario = Usuario.get(params.id)
+        }
         if (!usuario) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'usuario.label', default: 'Usuario'), params.id])
             redirect(action: "lista")
