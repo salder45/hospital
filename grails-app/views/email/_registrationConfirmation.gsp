@@ -1,2 +1,2 @@
-<center><h1>Hello ${usuario.nombre}<p>Welcome to collab-todo.</h1></center>
+<center><h1>Hello ${usuario.nombre}<p>Bienvenido al Hospital RWE.</h1></center>
 
