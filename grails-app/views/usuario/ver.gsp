@@ -144,12 +144,12 @@
         </li>
       </g:if>
 
-      <g:if test="${usuario?.especialidades}">
+      <g:if test="${usuario?.especialidades?.especialidad}">
         <li class="fieldcontain">
           <span id="especialidades-label" class="property-label"><g:message code="usuario.especialidades.label" default="Especialidades" /></span>
 
-        <g:each in="${usuario.especialidades}" var="e">
-          <span class="property-value" aria-labelledby="especialidades-label"><g:link controller="especialidad" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
+        <g:each in="${usuario.especialidades.especialidad}" var="e">
+          <span class="property-value" aria-labelledby="especialidades-label"><g:link controller="especialidad" action="ver" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
         </g:each>
 
         </li>

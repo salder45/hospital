@@ -31,13 +31,15 @@ class EspecialidadController {
     }
 
     def ver() {
+        log.debug "Show Especialidad ${params}"
         def especialidad = Especialidad.get(params.id)
         if (!especialidad) {
 			flash.message = message(code: 'default.not.found.message', args: [message(code: 'especialidad.label', default: 'Especialidad'), params.id])
             redirect(action: "lista")
             return
         }
-
+        
+        log.debug "Lista de Doctores ${especialidad.usuariosDoctores}"
         [especialidad: especialidad]
     }
 

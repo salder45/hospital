@@ -9,12 +9,21 @@
 	</label>
 	<g:textField name="nombre" required="" value="${especialidad?.nombre}"/>
 </div>
-
-<div class="fieldcontain ${hasErrors(bean: especialidad, field: 'doctor', 'error')} required">
-	<label for="doctor">
-		<g:message code="especialidad.doctor.label" default="Doctor" />
-		<span class="required-indicator">*</span>
+<!--
+<div class="fieldcontain ${hasErrors(bean: especialidad, field: 'doctores', 'error')} ">
+	<label for="doctores">
+		<g:message code="especialidad.doctores.label" default="Doctores" />
+		
 	</label>
-	<g:select id="doctor" name="doctor.id" from="${general.Usuario.list()}" optionKey="id" required="" value="${especialidad?.doctor?.id}" class="many-to-one"/>
+	
+<ul class="one-to-many">
+<g:each in="${especialidad?.doctores?}" var="d">
+    <li><g:link controller="doctorEspecialidad" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="doctorEspecialidad" action="create" params="['especialidad.id': especialidad?.id]">${message(code: 'default.add.label', args: [message(code: 'doctorEspecialidad.label', default: 'DoctorEspecialidad')])}</g:link>
+</li>
+</ul>
+-->
 </div>
 
