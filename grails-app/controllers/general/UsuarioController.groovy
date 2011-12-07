@@ -30,6 +30,7 @@ class UsuarioController {
         [usuario: new Usuario(params),flag:Constantes.CREAR,listaRoles:listaRoles]
     }
 
+    
     def guardar() {
         log.debug "Guardar Usuario $params"
         def usuario = new Usuario(params)
@@ -45,8 +46,20 @@ class UsuarioController {
             return
         }
         UsuarioRol.create(usuario,rol)
-
-        flash.message = message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuario.id])
+        
+        try {
+            sendMail {
+            to     "${usuario.email}" 
+            subject "Collab-todo Registration Confirmation" 
+            html    g.render(template:'/email/registrationConfirmation', model:[usuario:usuario])
+            }
+            flash.message = "Confirmation email sent to ${usuario.email}"
+            } catch(Exception e) {
+            log.error "Problem sending email $e.message" , e
+            flash.message = "Confirmation email NOT sent" 
+            }
+       
+        //flash.message = message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuario.id])
         redirect(action: "ver", id: usuario.id)
     }
 
@@ -177,4 +190,5 @@ class UsuarioController {
         log.debug "Busca Usuarios ${params}"
         
     }
+
 }
