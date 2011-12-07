@@ -172,6 +172,7 @@
         <g:actionSubmit class="delete" action="eliminar" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
         <!--<g:link class="save" controller="cita" action="crear" id="${usuario?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>-->
         <g:link class="save" controller="cita" action="sendToCita" id="${usuario?.id}"><g:message code="sacar.cita" default="Sacar Cita" /></g:link>
+        <g:link class="save" controller="usuario" action="agregarEspecialidad" id="${usuario?.id}"><g:message code="usuario.add.especialidad" default="Sacar Cita" /></g:link>
       </fieldset>
     </g:form>
   </div>

@@ -15,7 +15,7 @@
 <g:form action="ver" >
   <div class="fieldcontain ${hasErrors(bean: usuario, field: 'nombre', 'error')} required">
     <label for="usuario">
-      <g:message code="usuario.label" default="Usuario" />
+      <g:message code="usuario.doctor" default="Usuario" />
       <span class="required-indicator">*</span>
     </label>
     <g:hiddenField id="usuario" name="usuario.id" value="${usuario?.id}"/>
@@ -29,7 +29,7 @@
 </body>
 <r:script>
   $(document).ready(function(){
-  $("input#usuarioTexto").autocomplete({source:'${createLink(controller:'usuario', action:'buscaUsuariosPacientes')}',
+  $("input#usuarioTexto").autocomplete({source:'${createLink(controller:'usuario', action:'buscaUsuariosDoctor')}',
 select:function(event,ui){ $("input#usuario").val(ui.item.id);}  
 })
 });

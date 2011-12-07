@@ -174,7 +174,7 @@ if(elemento.value==3) {
 
   </div>
 </sec:ifAnyGranted>
-<form> 
+<!--<form> -->
   <sec:ifAnyGranted roles="ROLE_DOCTOR">
     <div class="fieldcontain ">
       <label for="rol">
@@ -188,16 +188,15 @@ if(elemento.value==3) {
       </g:if>
   </sec:ifAnyGranted>
 </div>
-</form> 
+<!--</form> -->
 
 <div id="span_otra_ocupacion" style="display:none">
   <div class="fieldcontain ${hasErrors(bean: usuario, field: 'doctorAlQueAsiste', 'error')} required">
     <label for="nombre">
       <g:message code="usuario.doctorAlQueAsiste" default="Asistente" />
-      <span class="required-indicator">*</span>
     </label>
-    <g:hiddenField id="doctorAlQueAsiste" name="doctorAlQueAsiste.id" value="${usuario?.doctorAlQueAsiste?.id}"/>  
-    <g:textField name="doctorAlQueAsisteTexto" id="doctorAlQueAsisteTexto" maxlength="40" value="${usuario?.doctorAlQueAsiste?.nombreCompleto}"/>
+    <g:hiddenField id="doctorAlQueAsiste" name="doctorAlQueAsiste.id" value="${usuario?.doctorAlQueAsiste?.id}"/>
+    <g:textField name="doctorAlQueAsisteTexto" id="doctorAlQueAsisteTexto" value="${usuario?.doctorAlQueAsiste?.nombreCompleto}"/>
   </div>
 </div>
 

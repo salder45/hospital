@@ -193,12 +193,25 @@ class UsuarioController {
     }
     
     def buscarUsuario(){
-        log.debug "Busca Usuarios ${params}"
-        
+        log.debug "Busca Usuarios ${params}"        
+    }
+    def buscarDoctor(){
+        log.debug "Busca Doctor ${params}"        
     }
     
     def agregarEspecialidad(){
+        log.debug "agregar Especialidad ${params}"     
+        def doctor=Usuario.get(params.id)
+        [doctor:doctor]
+    }
+    
+    def guardarEspecialidad(){
         log.debug "Especialidad Usuarios ${params}"
+        def doctor=Usuario.get(params.doctor)
+        def especialidad=Especialidad.get(params.especialidad.id)
+        log.debug "Especialidad ${doctor} Usuarios ${especialidad}"
+        def relacion=new DoctorEspecialidad(doctor:doctor,especialidad:especialidad).save()
         
+        redirect(action:'ver',id:doctor.id)
     }
 }
