@@ -107,3 +107,18 @@ ROLE_ASISTENTE > ROLE_PACIENTE
 grails.gorm.default.mapping={
     id generator:'identity'
 }
+
+// sendMail configuration…
+
+grails {
+mail {
+host = "smtp.gmail.com"   
+port = 465
+username = "rubenxgf@gmail.com"   
+password = "karime1923" 
+props = ["mail.smtp.auth":"true",
+"mail.smtp.socketFactory.port":"465",
+"mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+"mail.smtp.socketFactory.fallback":"false"]
+}
+}
