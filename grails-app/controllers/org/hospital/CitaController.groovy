@@ -2,6 +2,7 @@ package org.hospital
 import hospital.commons.Constantes
 import org.springframework.dao.DataIntegrityViolationException
 import grails.plugins.springsecurity.Secured
+import general.*
 @Secured(['ROLE_ASISTENTE'])
 class CitaController {
 
@@ -18,6 +19,8 @@ class CitaController {
     }
 
     def crear() {
+        log.debug "Crear Cita ${params}"
+        log.debug "Crear Cita ---------> ${params.idDoctor}"
         [cita: new Cita(params)]
     }
 
@@ -104,5 +107,18 @@ class CitaController {
 			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'cita.label', default: 'Cita'), params.id])
             redirect(action: "ver", id: params.id)
         }
+    }
+    
+        
+    def sendToCita(){
+        log.debug "Envia Cita ${params}"
+        def usuario=Usuario.get(params.id)
+        if(!usuario){
+            redirect(action:"buscarUsuario")
+        }
+        def cita=new Cita()
+        cita.doctor=usuario
+        cita.paciente=springSecurityService.currentUser
+        render(view: "crear", model: [cita: cita])
     }
 }

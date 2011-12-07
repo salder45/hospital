@@ -1,5 +1,5 @@
 import general.*
-import org.hospital.Especialidad
+import org.hospital.*
 import hospital.commons.Constantes
 class BootStrap {
     
@@ -87,27 +87,32 @@ class BootStrap {
             UsuarioRol.create(usuarioPaciente,rolPaciente)
         }
         
-/*        
-           def especialidad1 = new Especialidad(
-                nombre:"Hematologia",
-                doctor:usuarioDoctor
+        
+        def especialidad1 = new Especialidad(
+            nombre:"Hematologia"
             ).save()
           
-          def especialidad2 = new Especialidad(
-                nombre:"Neurologia",
-                doctor:usuarioDoctor
+            def especialidad2 = new Especialidad(
+                nombre:"Neurologia"
             ).save()
            
            
-          def especialidad3 = new Especialidad(
-                nombre:"Obstetricia",
-                doctor:usuarioDoctor
+            def especialidad3 = new Especialidad(
+                nombre:"Obstetricia"
             ).save()
-            */
-    }
+            
+            def relacion=new DoctorEspecialidad(
+                doctor:usuarioDoctor,
+                especialidad:especialidad1
+            ).save()
+            def relacion2=new DoctorEspecialidad(
+                doctor:usuarioDoctor,
+                especialidad:especialidad2
+            ).save()
+        }
     
     
-    def destroy = {
+        def destroy = {
+        }
     }
-}
 
