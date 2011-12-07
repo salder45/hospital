@@ -1,5 +1,27 @@
-<%@ page import="general.Usuario" %>
+<%@ page import="general.Usuario"
+import="general.hospital.*" 
+%>
 
+
+<!doctype html>
+<html>
+  <head>
+  <r:require module="jquery-ui"/>
+  <script language="javascript">
+    function toggle_ocupacion(elemento) {
+
+if(elemento.value==3) {
+   document.getElementById("span_otra_ocupacion").style.display = "inline";
+} else {
+   document.getElementById("span_otra_ocupacion").style.display = "none";
+}
+
+}
+ 
+      
+  </script> 
+</head>
+  <body>
 
 <g:if test="${flag==hospital.commons.Constantes.CREAR}">
   <div class="fieldcontain ${hasErrors(bean: usuario, field: 'username', 'error')} required">
@@ -152,16 +174,39 @@
 
   </div>
 </sec:ifAnyGranted>
+  <form> 
 <sec:ifAnyGranted roles="ROLE_DOCTOR">
 <div class="fieldcontain ">
   <label for="rol">
     <g:message code="usuario.rol" default="Rol" />
   </label>
   <g:if test="${flag==hospital.commons.Constantes.CREAR}">
-    <g:select name="rolN" from="${listaRoles}" optionKey="id"/>
+    <g:select name="rolN" id="rolb"from="${listaRoles}" optionKey="id" onchange="toggle_ocupacion(this)"/>
   </g:if>
   <g:if test="${flag!=hospital.commons.Constantes.CREAR}">
     <g:select name="rolN" from="${listaRoles}" value="${usuario?.rol?.id}" optionKey="id"/>
   </g:if>
 </sec:ifAnyGranted>
 </div>
+</form> 
+
+  <div id="span_otra_ocupacion" style="display:none">
+  <div class="fieldcontain ${hasErrors(bean: usuario, field: 'nombre', 'error')} required">
+  <label for="nombre">
+    <g:message code="usuario.nombre.label" default="Asistente" />
+    <span class="required-indicator">*</span>
+  </label>
+  <g:textField name="nombre" id="autoc" maxlength="40" pattern="${usuario.constraints.nombre.matches}" required="" value="${usuario?.nombre}"/>
+</div>
+  </div>
+  
+  <r:script>
+   $(document).ready(function(){
+  $("input#autoc").autocomplete({source:'${createLink(controller:'usuario', action:'buscaUsuariosPacientes')}',
+select:function(event,ui){ $("input#autoc").val(ui.item.id);} 
+})
+});
+
+</r:script>
+</body>
+</html>
