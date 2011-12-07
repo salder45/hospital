@@ -183,4 +183,9 @@ class UsuarioController {
         log.debug "Busca Usuarios ${params}"
         
     }
+    
+    def agregarEspecialidad(){
+        log.debug "Especialidad Usuarios ${params}"
+        
+    }
 }

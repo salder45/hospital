@@ -5,8 +5,7 @@ class Especialidad {
        
     static hasMany=[doctores:DoctorEspecialidad]
     
-    static constraints = {
-    
+    static constraints = {    
     nombre(blank:false)
     }
      
@@ -16,7 +15,18 @@ class Especialidad {
           
      String toString() {
         return nombre
-    }  
+    }
+    
+    List<Usuario> getUsuariosDoctores(){
+        log.debug "getUsuariosDoctores"
+        List<Usuario> doctores=new ArrayList<Usuario>()
+        def listaTmp=this.doctores
+        log.debug "Relacion ${listaTmp}"
+        for(doctor in listaTmp){
+            doctores.add(doctor.doctor)
+        }
+        return doctores
+    }
                                   
 }
 

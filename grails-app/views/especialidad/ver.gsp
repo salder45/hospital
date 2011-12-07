@@ -32,11 +32,13 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${especialidad?.doctor}">
+				<g:if test="${especialidad?.usuariosDoctores}">
 				<li class="fieldcontain">
-					<span id="doctor-label" class="property-label"><g:message code="especialidad.doctor.label" default="Doctor" /></span>
+					<span id="doctores-label" class="property-label"><g:message code="especialidad.doctores.label" default="Doctores" /></span>
 					
-						<span class="property-value" aria-labelledby="doctor-label"><g:link controller="usuario" action="ver" id="${especialidad?.doctor?.id}">${especialidad?.doctor?.encodeAsHTML()}</g:link></span>
+						<g:each in="${especialidad.usuariosDoctores}" var="d">
+						<span class="property-value" aria-labelledby="doctores-label"><g:link controller="usuario" action="ver" id="${d.id}">${d?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>
