@@ -77,4 +77,7 @@ class Usuario {
             like "apellidoMaterno",filtro
         }
     }
+      String toString(){
+        return getNombreCompleto()
+    }
 }
