@@ -38,9 +38,9 @@
     <li><a href="#" onmouseover="mopen('m1')" onmouseout="mclosetime()">Buscar</a>
       <div id="m1" onmouseover="mcancelclosetime()" onmouseout="mclosetime()" >
 
-        <g:link controller="usuario" action='buscarDoctor' >Doctor</g:link>
+        <g:link controller="usuario" action='buscarUsuario' >Doctor</g:link>
 
-        <g:link controller="usuario" action='buscarEspecialidad' >Especialidad</g:link>
+        <g:link controller="especialidad" action='buscarEspecialidad' >Especialidad</g:link>
         <sec:ifAnyGranted roles="ROLE_ADMIN"><g:link controller="usuario" action='buscarUsuario' >Usuarios</g:link></sec:ifAnyGranted>
       </div>
     </li>

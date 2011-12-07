@@ -21,7 +21,7 @@ if(elemento.value==3) {
       
   </script> 
 </head>
-  <body>
+<body>
 
 <g:if test="${flag==hospital.commons.Constantes.CREAR}">
   <div class="fieldcontain ${hasErrors(bean: usuario, field: 'username', 'error')} required">
@@ -174,36 +174,37 @@ if(elemento.value==3) {
 
   </div>
 </sec:ifAnyGranted>
-  <form> 
-<sec:ifAnyGranted roles="ROLE_DOCTOR">
-<div class="fieldcontain ">
-  <label for="rol">
-    <g:message code="usuario.rol" default="Rol" />
-  </label>
-  <g:if test="${flag==hospital.commons.Constantes.CREAR}">
-    <g:select name="rolN" id="rolb"from="${listaRoles}" optionKey="id" onchange="toggle_ocupacion(this)"/>
-  </g:if>
-  <g:if test="${flag!=hospital.commons.Constantes.CREAR}">
-    <g:select name="rolN" from="${listaRoles}" value="${usuario?.rol?.id}" optionKey="id"/>
-  </g:if>
-</sec:ifAnyGranted>
+<form> 
+  <sec:ifAnyGranted roles="ROLE_DOCTOR">
+    <div class="fieldcontain ">
+      <label for="rol">
+        <g:message code="usuario.rol" default="Rol" />
+      </label>
+      <g:if test="${flag==hospital.commons.Constantes.CREAR}">
+        <g:select name="rolN" id="rolb"from="${listaRoles}" optionKey="id" onchange="toggle_ocupacion(this)"/>
+      </g:if>
+      <g:if test="${flag!=hospital.commons.Constantes.CREAR}">
+        <g:select name="rolN" from="${listaRoles}" value="${usuario?.rol?.id}" optionKey="id"/>
+      </g:if>
+  </sec:ifAnyGranted>
 </div>
 </form> 
 
-  <div id="span_otra_ocupacion" style="display:none">
-  <div class="fieldcontain ${hasErrors(bean: usuario, field: 'nombre', 'error')} required">
-  <label for="nombre">
-    <g:message code="usuario.nombre.label" default="Asistente" />
-    <span class="required-indicator">*</span>
-  </label>
-  <g:textField name="nombre" id="autoc" maxlength="40" pattern="${usuario.constraints.nombre.matches}" required="" value="${usuario?.nombre}"/>
-</div>
+<div id="span_otra_ocupacion" style="display:none">
+  <div class="fieldcontain ${hasErrors(bean: usuario, field: 'doctorAlQueAsiste', 'error')} required">
+    <label for="nombre">
+      <g:message code="usuario.doctorAlQueAsiste" default="Asistente" />
+      <span class="required-indicator">*</span>
+    </label>
+    <g:hiddenField id="doctorAlQueAsiste" name="doctorAlQueAsiste.id" value="${usuario?.doctorAlQueAsiste?.id}"/>  
+    <g:textField name="doctorAlQueAsisteTexto" id="doctorAlQueAsisteTexto" maxlength="40" value="${usuario?.doctorAlQueAsiste?.nombreCompleto}"/>
   </div>
-  
-  <r:script>
-   $(document).ready(function(){
-  $("input#autoc").autocomplete({source:'${createLink(controller:'usuario', action:'buscaUsuariosPacientes')}',
-select:function(event,ui){ $("input#autoc").val(ui.item.id);} 
+</div>
+
+<r:script>
+  $(document).ready(function(){
+  $("input#doctorAlQueAsisteTexto").autocomplete({source:'${createLink(controller:'usuario', action:'buscaUsuariosDoctor')}',
+select:function(event,ui){ $("input#doctorAlQueAsiste").val(ui.item.id);} 
 })
 });
 

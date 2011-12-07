@@ -1,5 +1,5 @@
 package org.hospital
-
+import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
 
 class EspecialidadController {
@@ -26,15 +26,21 @@ class EspecialidadController {
             return
         }
 
-		flash.message = message(code: 'default.created.message', args: [message(code: 'especialidad.label', default: 'Especialidad'), especialidad.id])
+        flash.message = message(code: 'default.created.message', args: [message(code: 'especialidad.label', default: 'Especialidad'), especialidad.id])
         redirect(action: "ver", id: especialidad.id)
     }
 
     def ver() {
         log.debug "Show Especialidad ${params}"
-        def especialidad = Especialidad.get(params.id)
+        def especialidad
+        if(params?.especialidad?.id!=null){
+            especialidad=Especialidad.get(params.especialidad.id)
+        }else{            
+            especialidad = Especialidad.get(params.id)
+        }
+        
         if (!especialidad) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'especialidad.label', default: 'Especialidad'), params.id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'especialidad.label', default: 'Especialidad'), params.id])
             redirect(action: "lista")
             return
         }
@@ -66,7 +72,7 @@ class EspecialidadController {
             def version = params.version.toLong()
             if (especialidad.version > version) {
                 especialidad.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'especialidad.label', default: 'Especialidad')] as Object[],
+                    [message(code: 'especialidad.label', default: 'Especialidad')] as Object[],
                           "Another user has updated this Especialidad while you were editing")
                 render(view: "editar", model: [especialidad: especialidad])
                 return
@@ -80,26 +86,43 @@ class EspecialidadController {
             return
         }
 
-		flash.message = message(code: 'default.updated.message', args: [message(code: 'especialidad.label', default: 'Especialidad'), especialidad.id])
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'especialidad.label', default: 'Especialidad'), especialidad.id])
         redirect(action: "ver", id: especialidad.id)
     }
 
     def eliminar() {
         def especialidad = Especialidad.get(params.id)
         if (!especialidad) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'especialidad.label', default: 'Especialidad'), params.id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'especialidad.label', default: 'Especialidad'), params.id])
             redirect(action: "lista")
             return
         }
 
         try {
             especialidad.delete(flush: true)
-			flash.message = message(code: 'default.deleted.message', args: [message(code: 'especialidad.label', default: 'Especialidad'), params.id])
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'especialidad.label', default: 'Especialidad'), params.id])
             redirect(action: "lista")
         }
         catch (DataIntegrityViolationException e) {
-			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'especialidad.label', default: 'Especialidad'), params.id])
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'especialidad.label', default: 'Especialidad'), params.id])
             redirect(action: "ver", id: params.id)
         }
+    }
+    
+    def buscarEspecialidad(){
+        log.debug "buscarEspecialidad ${params}"
+    }
+    
+    def listaEspecialidades(){
+        log.debug "listaEspecialidades ${params}"
+        def filtro="%${params.term}%"
+        def especialidades=Especialidad.findAllByNombreLike(filtro)
+        def lista=[]
+        for(especialidad in especialidades){
+            lista <<[id:especialidad.id,value:especialidad.nombre]
+        }
+        log.debug("Lista: $lista")
+        log.debug("ListaJSON: ${lista as JSON}")
+        render lista as JSON
     }
 }
