@@ -24,6 +24,7 @@ class Usuario {
     static mappedBy=[citasDoctor:'doctor',citasPaciente:'paciente']
     static transients = ['rol']
     static constraints = {
+       
         username blank: false, unique: true
         password blank: false,password:true
         nombre blank:false,maxSize:40,matches:"[a-zA-z]+"

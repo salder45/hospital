@@ -11,6 +11,7 @@
                       <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
 	</head>
 	<body>
+
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		
 		<div id="page-body" role="main">

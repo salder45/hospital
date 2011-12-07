@@ -13,13 +13,13 @@
 
 <body>
 <g:form action="ver" >
-  <div class="fieldcontain ${hasErrors(bean: usuario, field: 'nombre', 'error')} required">
-    <label for="usuario">
-      <g:message code="usuario.doctor" default="Usuario" />
+  <div class="fieldcontain ${hasErrors(bean: especialidad, field: 'nombre', 'error')} required">
+    <label for="especialidad">
+      <g:message code="especialidad.especialidad" default="Especialidad" />
       <span class="required-indicator">*</span>
     </label>
-    <g:hiddenField id="usuario" name="usuario.id" value="${usuario?.id}"/>
-    <g:textField id="usuarioTexto" name="usuarioTexto" value="${usuario?.nombreCompleto}"/>
+    <g:hiddenField id="especialidad" name="especialidad.id" value="${especialidad?.id}"/>
+    <g:textField id="especialidadTexto" name="especialidadTexto" value="${especialidad?.nombre}"/>
   </div>
   <fieldset class="buttons">
     <g:submitButton name="search" class="list" value="${message(code: 'search', default: 'Search')}" />
@@ -29,8 +29,8 @@
 </body>
 <r:script>
   $(document).ready(function(){
-  $("input#usuarioTexto").autocomplete({source:'${createLink(controller:'usuario', action:'buscaUsuariosDoctor')}',
-select:function(event,ui){ $("input#usuario").val(ui.item.id);}  
+  $("input#especialidadTexto").autocomplete({source:'${createLink(controller:'especialidad', action:'listaEspecialidades')}',
+select:function(event,ui){ $("input#especialidad").val(ui.item.id);}  
 })
 });
 </r:script>
