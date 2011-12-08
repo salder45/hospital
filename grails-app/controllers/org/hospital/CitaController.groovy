@@ -8,6 +8,7 @@ class CitaController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
     def springSecurityService
+    def citaService
 
     def index() {
         redirect(action: "lista", params: params)
@@ -29,6 +30,13 @@ class CitaController {
         def cita = new Cita(params)
         cita.status=Constantes.STATUS_CITA_OTORGADA
         cita.userCreated=springSecurityService.currentUser
+        Date fecha=new Date()
+        fecha.setTime(Date.parse(params.citaS))
+        cita.cita=fecha
+        cita.fechaCita=fecha.getTime()
+        
+        def lista=citaService.listaFiltrada(fecha)
+        log.debug "Listaaa ---> ${lista}"
         if (!cita.save(flush: true)) {
             render(view: "crear", model: [cita: cita])
             return
@@ -80,7 +88,10 @@ class CitaController {
         }
 
         cita.properties = params
-
+        Date fecha=new Date()
+        fecha.setTime(Date.parse(params.citaS))
+        cita.cita=fecha        
+        cita.fechaCita=fecha.getTime()
         if (!cita.save(flush: true)) {
             render(view: "editar", model: [cita: cita])
             return

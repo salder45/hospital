@@ -215,7 +215,9 @@ class BootStrap {
                     horaInicial:fecha,
                     horaFinal:fecha2
                 ).save()
-            }           
+            }
+            log.info "Finalizando..."
+            
         }
         
     }
