@@ -4,9 +4,9 @@ class Cita {
     String status
     Date cita
     Date dateCreated
-    Date lastUpdated
+    Date lastUpdated    
     
-    static belongsTo=[doctor:Usuario,paciente:Usuario,userCreated:Usuario]
+    static belongsTo=[doctor:Usuario,paciente:Usuario,userCreated:Usuario,horario:Horario]
     
     static constraints = {
         cita blank:false
