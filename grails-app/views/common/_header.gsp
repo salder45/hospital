@@ -38,6 +38,7 @@
            <li> <sec:ifNotLoggedIn><a href="${createLink(controller:'login')}">Login</a></sec:ifNotLoggedIn></li>
           <li><sec:ifLoggedIn><a href="${createLink(controller:'logout')}">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Salir <sec:loggedInUserInfo field="username"/></a></sec:ifLoggedIn></li>
         </ul>
+
       </div>
 
     </div>
