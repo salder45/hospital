@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Hospital</title>
+      <link rel="stylesheet" href="themes/default/default.css" type="text/css" media="screen" />
+                          <link rel="stylesheet" href="themes/pascal/pascal.css" type="text/css" media="screen" />
+                          <link rel="stylesheet" href="themes/orman/orman.css" type="text/css" media="screen" />
+                         <link rel="stylesheet" href="nivo-slider.css" type="text/css" media="screen" />
+                      <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	
+<script type="text/javascript" charset="utf-8">
+$(function(){
+	$('#menu li a').click(function(event){
+		var elem = $(this).next();
+		if(elem.is('ul')){
+			event.preventDefault();
+			$('#menu ul:visible').not(elem).slideUp();
+			elem.slideToggle();
+		}
+	});
+});
+</script>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<link href="Styles/index.css" rel="stylesheet" type="text/css" />
+<style type="text/css" media="screen">
+#menu{
+	border:195px;
+	border:195px;
+	border:195px;
+	box:190px 190px 59px #888;
+	box:190px 190px 59px #888;
+}
+#menu li{border-bottom:1px solid #FFF;}
+#menu ul li, #menu li:last-child{border:none}	
+a{
+	display:block;
+	color:#FFF;
+	text-decoration:none;
+	font-family:'Helvetica', Arial, sans-serif;
+	font-size:17px;
+	padding:3px 5px;
+	text-shadow:1px 1px 1px #325179;
+}
+#menu a:hover{
+	color:#F9B855;
+	-webkit-transition: color 0.2s linear;
+}
+#menu ul a{background-color:#6594D1;}
+#menu ul a:hover{
+	background-color:#FFF;
+	color:#2961A9;
+	text-shadow:none;
+	-webkit-transition: color, background-color 0.2s linear;
+}
+ul{
+	display:block;
+	background-color:#2961A9;
+	margin:0;
+	padding:0;
+	width:199px;
+	list-style:none;
+}
+#menu ul{background-color:#6594D1;}
+#menu li ul {display:none;}
+</style>
+</head>
+
+<body>
+	<!--Master container for the page begins here-->
+	<div id="mast_container">
+		<div id="masthead">
+		
+		</div>
+		<!--Top Container begins here-->
+		<div class="top_container">
+			
+			<div id="top_left_col">
+			
+				<div id="links">
+			<ul id="menu">
+<li><a href="#">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Home</a></li>
+<li><a href="#">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Buscar</a>
+	<ul>
+		<li><a href="#">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Doctor </a></li>
+		<li><a href="#">&nbsp &nbsp &nbsp &nbsp &nbsp Especialidad</a></li>
+		<li><a href="#">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Usuarios</a></li>
+	
+	</ul>
+</li>
+<li><a href="#">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Registro</a></li>
+<li><a href="#">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Cita</a>
+	<ul>
+		<li><a href="#">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Agregar </a></li>
+		<li><a href="#">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Lista</a></li>
+		<li><a href="#">&nbsp &nbsp &nbsp &nbsp Lista Asistente</a></li>
+	
+	</ul>
+</li>
+<li><a href="#">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Asistente</a>
+	<ul>
+		<li><a href="#">&nbsp &nbsp &nbsp Agregar Asistente </a></li>
+		</ul>
+</li>
+<li><a href="#">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Usuarios</a>
+<ul>
+		<li><a href="#">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Buscar</a></li>
+<li><a href="#">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Usuarios</a></li>
+		</ul>
+
+</li>
+<li><a href="#">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Salir</a></li>
+</ul>
+			</div>
+
+			</div>
+			<div id="top_page_content">
+		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		
+		<div id="page-body" role="main">
+		
+		</div>
+                <div align ="center">
+<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		
+		<div id="page-body" role="main">
+			 <div id="wrapper">
+    
+        <div class="slider-wrapper theme-default">
+            <div class="ribbon"></div>
+            <div id="slider" class="nivoSlider">
+                <img src="images/toystory.jpg" alt="" />
+                <img src="images/up.jpg" alt="" title="Hacemos Todo Por Tu Salud" />
+                <img src="images/walle.jpg" alt="" data-transition="slideInLeft" />
+                <img src="images/nemo.jpg" alt="" title="Modernas Instalaciones" />
+            </div>
+    
+        </div>
+
+    </div>
+    <script type="text/javascript" src="scripts/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="jquery.nivo.slider.pack.js"></script>
+    <script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+    </script>
+		</div>
+		<!--Top Container ends here-->
+		
+		<!--Bottom Container begins here-->
+		<div class="bot_container">
+			<div id="bot_left_col">
+			
+				
+			
+		</div>
+		<!--Bottom Container ends here-->
+
+		<!--Footer begins here-->
+		<div id="footer">
+	
+			<hr id="bluehr"/>
+			<div id="credit">
+				Created by Saffron Stroke (2009)
+			</div>
+		</div>
+		<!--Footer ends here-->
+	</div>
+	<!--Master container for the page ends here-->
+</body>
+
+</html>

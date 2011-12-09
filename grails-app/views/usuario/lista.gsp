@@ -8,7 +8,6 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#list-usuario" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<!--<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
@@ -20,39 +19,40 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table>
-				<thead>
-					<tr>
+                        <table class="tabla-grails">
+
+				<thead class="tabla-grails">
+					<tr class="tabla-grails">
 					
-						<g:sortableColumn property="username" title="${message(code: 'usuario.username.label', default: 'Username')}" />
+						<g:sortableColumn property="username" title="${message(code: 'usuario.username.label', default: 'Username')}"  class="tabla-grails"/>
 					
-						<g:sortableColumn property="password" title="${message(code: 'usuario.password.label', default: 'Password')}" />
+						<g:sortableColumn property="password" title="${message(code: 'usuario.password.label', default: 'Password')}"  class="tabla-grails"/>
 					
-						<g:sortableColumn property="nombre" title="${message(code: 'usuario.nombre.label', default: 'Nombre')}" />
+						<g:sortableColumn property="nombre" title="${message(code: 'usuario.nombre.label', default: 'Nombre')}"  class="tabla-grails"/>
 					
-						<g:sortableColumn property="apellidoPaterno" title="${message(code: 'usuario.apellidoPaterno.label', default: 'Apellido Paterno')}" />
+						<g:sortableColumn property="apellidoPaterno" title="${message(code: 'usuario.apellidoPaterno.label', default: 'Apellido Paterno')}"  class="tabla-grails"/>
 					
-						<g:sortableColumn property="apellidoMaterno" title="${message(code: 'usuario.apellidoMaterno.label', default: 'Apellido Materno')}" />
+						<g:sortableColumn property="apellidoMaterno" title="${message(code: 'usuario.apellidoMaterno.label', default: 'Apellido Materno')}"  class="tabla-grails"/>
 					
-						<g:sortableColumn property="telefono" title="${message(code: 'usuario.telefono.label', default: 'Telefono')}" />
+						<g:sortableColumn property="telefono" title="${message(code: 'usuario.telefono.label', default: 'Telefono')}"  class="tabla-grails"/>
 					
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="tabla-grails">
 				<g:each in="${usuarioList}" status="i" var="usuario">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}"  class="tabla-grails">
 					
-						<td><g:link action="ver" id="${usuario.id}">${fieldValue(bean: usuario, field: "username")}</g:link></td>
+						<td class="tabla-grails"><g:link action="ver" id="${usuario.id}" class="tabla-grails">${fieldValue(bean: usuario, field: "username")}</g:link></td>
 					
-						<td>${fieldValue(bean: usuario, field: "password")}</td>
+						<td class="tabla-grails">${fieldValue(bean: usuario, field: "password")}</td>
 					
-						<td>${fieldValue(bean: usuario, field: "nombre")}</td>
+						<td class="tabla-grails">${fieldValue(bean: usuario, field: "nombre")}</td>
 					
-						<td>${fieldValue(bean: usuario, field: "apellidoPaterno")}</td>
+						<td class="tabla-grails">${fieldValue(bean: usuario, field: "apellidoPaterno")}</td>
 					
-						<td>${fieldValue(bean: usuario, field: "apellidoMaterno")}</td>
+						<td class="tabla-grails">${fieldValue(bean: usuario, field: "apellidoMaterno")}</td>
 					
-						<td>${fieldValue(bean: usuario, field: "telefono")}</td>
+						<td> class="tabla-grails"${fieldValue(bean: usuario, field: "telefono")}</td>
 					
 					</tr>
 				</g:each>
